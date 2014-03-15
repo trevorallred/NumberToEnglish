@@ -1,11 +1,8 @@
 {
   "name": "NumberToEnglish",
   "version": "0.1.0",
-  "main": "main.js",
   "devDependencies": {
     "grunt": "~0.4.2",
-    "grunt-contrib-jshint": "~0.6.3",
-    "grunt-contrib-watch": "~0.6.0",
     "karma": "~0.12.0",
     "karma-jasmine": "~0.1.5",
     "grunt-karma": "~0.8.2",
