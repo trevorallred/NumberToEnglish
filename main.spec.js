@@ -5,10 +5,18 @@ describe('numbers', function () {
         expect(formatNumber('1')).toBe('one');
         expect(formatNumber(' 9 ')).toBe('nine');
     });
-    it('should format 1 - 19', function () {
+    it('should format single digits', function () {
         expect(formatNumber(1)).toBe('one');
         expect(formatNumber(2)).toBe('two');
         expect(formatNumber(3)).toBe('three');
+        expect(formatNumber(4)).toBe('four');
+        expect(formatNumber(5)).toBe('five');
+        expect(formatNumber(6)).toBe('six');
+        expect(formatNumber(7)).toBe('seven');
+        expect(formatNumber(8)).toBe('eight');
+        expect(formatNumber(9)).toBe('nine');
+    });
+    it('should format 10 - 19', function () {
         expect(formatNumber(10)).toBe('ten');
         expect(formatNumber(11)).toBe('eleven');
         expect(formatNumber(12)).toBe('twelve');
