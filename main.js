@@ -30,14 +30,24 @@ var formatInt = function (value) {
     ];
 
     for (var level = 0; level < levels.length; level++) {
-        var cutoff = Math.pow(10, levels[level].power);
-        if (value >= cutoff) {
-            var aboveCutoff = Math.floor(value / cutoff);
-            var belowCutoff = value - (aboveCutoff * cutoff);
-            return (formatInt(aboveCutoff) + ' ' + levels[level].label + ' ' + formatInt(belowCutoff)).trim();
+        if (value.length > levels[level].power) {
+            var aboveCutoff = value.substr(0, value.length - levels[level].power);
+            aboveCutoff = formatInt(aboveCutoff);
+            var belowCutoff = value.substr(value.length - levels[level].power);
+            belowCutoff = formatInt(belowCutoff);
+
+            if (aboveCutoff) {
+                aboveCutoff += ' ' + levels[level].label;
+            }
+
+            if (belowCutoff) {
+                aboveCutoff += ' ' + belowCutoff;
+            }
+            return aboveCutoff.trim();
         }
     }
 
+    value = parseInt(value);
     if (value > 19) {
         var aboveCutoff = Math.floor(value / 10);
         var belowCutoff = value - (aboveCutoff * 10);
@@ -56,17 +66,17 @@ var formatInt = function (value) {
     return '';
 };
 
-var toInt = function (value) {
+var toCleanString = function (value) {
     if (typeof value === 'string') {
         value = value.replace(/,/g, '');
     }
-    return parseInt(value);
+    return value + '';
 }
 
 /**
  * Convert any number into the corresponding English text
  */
 var formatNumber = function (value) {
-    value = toInt(value);
+    value = toCleanString(value);
     return formatInt(value);
 };
