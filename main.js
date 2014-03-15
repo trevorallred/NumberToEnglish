@@ -16,6 +16,12 @@ var formatTwentyToNinety = function (value) {
 var formatInt = function (value) {
 
     var levels = [
+        {label: 'nonillion', power: 30},
+        {label: 'octillion', power: 27},
+        {label: 'septillion', power: 24},
+        {label: 'sextillion', power: 21},
+        {label: 'quintillion', power: 18},
+        {label: 'quadrillion', power: 15},
         {label: 'trillion', power: 12},
         {label: 'billion', power: 9},
         {label: 'million', power: 6},
@@ -35,7 +41,12 @@ var formatInt = function (value) {
     if (value > 19) {
         var aboveCutoff = Math.floor(value / 10);
         var belowCutoff = value - (aboveCutoff * 10);
-        return (formatTwentyToNinety(aboveCutoff) + ' ' + formatInt(belowCutoff)).trim();
+        var singleDigit = formatInt(belowCutoff);
+        if (singleDigit) {
+            return formatTwentyToNinety(aboveCutoff) + '-' + singleDigit;
+        } else {
+            return formatTwentyToNinety(aboveCutoff);
+        }
     }
 
     if (value > 0) {
