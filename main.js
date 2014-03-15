@@ -1,65 +1,16 @@
 'use strict';
 
 var formatOneToNineteen = function (value) {
-    // Format Numbers 1 through 19
-    switch(value) {
-        case 14:
-        case 16:
-        case 17:
-        case 19:
-            return formatInt(value - 10) + 'teen';
+    var oneToNineteen = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
+        'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
 
-        case 1:
-            return 'one';
-        case 2:
-            return 'two';
-        case 3:
-            return 'three';
-        case 4:
-            return 'four';
-        case 5:
-            return 'five';
-        case 6:
-            return 'six';
-        case 7:
-            return 'seven';
-        case 8:
-            return 'eight';
-        case 9:
-            return 'nine';
-        case 10:
-            return 'ten';
-        case 11:
-            return 'eleven';
-        case 12:
-            return 'twelve';
-        case 13:
-            return 'thirteen';
-        case 15:
-            return 'fifteen';
-        case 18:
-            return 'eighteen';
-    }
+    return oneToNineteen[value - 1];
 };
 
 var formatTwentyToNinety = function (value) {
-    // Format Numbers 20 through 90
-    switch(value) {
-        case 2:
-            return 'twenty';
-        case 3:
-            return 'thirty';
-        case 4:
-            return 'forty';
-        case 5:
-            return 'fifty';
-        case 8:
-            return 'eighty';
-        case 6:
-        case 7:
-        case 9:
-            return formatOneToNineteen(value) + 'ty';
-    }
+    var tens = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+    return tens[value - 2];
 };
 
 var formatInt = function (value) {
@@ -72,7 +23,7 @@ var formatInt = function (value) {
         {label: 'hundred', power: 2}
     ];
 
-    for(var level = 0; level < levels.length; level++) {
+    for (var level = 0; level < levels.length; level++) {
         var cutoff = Math.pow(10, levels[level].power);
         if (value >= cutoff) {
             var aboveCutoff = Math.floor(value / cutoff);
@@ -101,6 +52,9 @@ var toInt = function (value) {
     return parseInt(value);
 }
 
+/**
+ * Convert any number into the corresponding English text
+ */
 var formatNumber = function (value) {
     value = toInt(value);
     return formatInt(value);
