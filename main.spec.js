@@ -91,15 +91,20 @@ describe('numbers', function () {
                 'three hundred twenty-one';
             expect(formatNumber(567890987654321)).toBe(expected);
         });
-        xit('should get crazy insane', function () {
-            expect(formatNumber('1,000,000,000,000,000,000,000,000,000,000')).toBe('one nonillion');
-//            expect(formatNumber('1,234,567,890,987,654,321')).toBe('three hundred twenty-one');
+        it('should get crazy insane', function () {
+            expect(formatNumber('1,234,567,890,987,654,321')).toBe('one quintillion ' +
+                'two hundred thirty-four quadrillion ' +
+                'five hundred sixty-seven trillion ' +
+                'eight hundred ninety billion ' +
+                'nine hundred eighty-seven million ' +
+                'six hundred fifty-four thousand ' +
+                'three hundred twenty-one');
         });
     });
     describe('weird cases', function () {
-//        it('should format sextillion', function () {
-//            expect(formatNumber('10,100,000,000,000,000,000,000')).toBe('one hundred twenty-three sextillion');
-//        });
+        it('should format sextillion', function () {
+            expect(formatNumber('10,000,000,000,010,000,000,000')).toBe('ten sextillion ten billion');
+        });
         it('should format strings', function () {
             expect(formatNumber('1')).toBe('one');
             expect(formatNumber(' 9 ')).toBe('nine');
