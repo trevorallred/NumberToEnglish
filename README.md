@@ -6,7 +6,7 @@ Kata for converting any number to equivalent English text. See main.spec.js for 
 Installation
 ============
 
-    git clone https://github.com/trevorallred/NumberToEnglish
+    git clone git@github.com:trevorallred/NumberToEnglish.git
     cd NumberToEnglish
     npm install
     grunt
